@@ -1,4 +1,4 @@
-// Otaku Coin's ICO
+// Test Coin's ICO
 
 pragma solidity ^0.4.11;
 
