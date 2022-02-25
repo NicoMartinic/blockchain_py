@@ -23,9 +23,9 @@ contract TestCoin_ICO {
         _;
     }
 
-    // Getting the equity in OtakuCoin of an investor
-    function equity_in_OtakuCoin(address investor) external constant returns (uint256) {
-        return equity_OtakuCoin [investor];
+    // Getting the equity in TestCoin of an investor
+    function equity_in_TestCoin(address investor) external constant returns (uint256) {
+        return equity_TestCoin [investor];
     }
 
     // Getting equity in USD of an investor
@@ -33,20 +33,20 @@ contract TestCoin_ICO {
         return equity_usd [investor];
     }
 
-    // Buying OtakuCoin
-    function buy_OtakuCoin(address investor, uint256 usd_invested) external 
-    can_buy_OtakuCoin(usd_invested) {
-        uint256 OtakuCoin_bought = usd_invested * usd_to_OtakuCoin;
-        equity_OtakuCoin[investor] += OtakuCoin_bought;
-        equity_usd[investor] = equity_OtakuCoin[investor] / usd_to_OtakuCoin;
-        total_OtakuCoin_bought += OtakuCoin_bought;
+    // Buying TestCoin
+    function buy_TestCoin(address investor, uint256 usd_invested) external 
+    can_buy_TestCoin(usd_invested) {
+        uint256 TestCoin_bought = usd_invested * usd_to_TestCoin;
+        equity_OtakuCoin[investor] += TestCoin_bought;
+        equity_usd[investor] = equity_TestCoin[investor] / usd_to_TestCoin;
+        total_TestCoin_bought += TestCoin_bought;
     }
 
-    // Selling OtakuCoin
-    function sell_OtakuCoin(address investor, uint256 OtakuCoin_to_sell) external {
-        equity_OtakuCoin[investor] -= OtakuCoin_to_sell;
-        equity_usd[investor] = equity_OtakuCoin[investor] / usd_to_OtakuCoin;
-        total_OtakuCoin_bought -= OtakuCoin_to_sell;
+    // Selling TestCoin
+    function sell_TestCoin(address investor, uint256 TestCoin_to_sell) external {
+        equity_TestCoin[investor] -= TestCoin_to_sell;
+        equity_usd[investor] = equity_TestCoin[investor] / usd_to_TestCoin;
+        total_TestCoin_bought -= TestCoin_to_sell;
     }
 
 }
